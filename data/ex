@@ -1,0 +1,12 @@
+integer 1,90,-100  -> without decimals
+float 8.001, 12.9, -383.0  -> with decoimals
+vector {1.0, 2.2, 9.2}    -> store Positions, Normals, Colors, tangent, bitangent, 
+string "jfhfhf"
+
+
+
+
+
+
+
+

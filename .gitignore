@@ -1,6 +1,5 @@
 # Python virtual environment
 venv/
-data/
 
 # ImageNet classes file
 imagenet_classes.txt
