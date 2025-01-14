@@ -1,0 +1,11 @@
+# Python virtual environment
+venv/
+data/
+
+# ImageNet classes file
+imagenet_classes.txt
+
+# Python cache files (good practice to include)
+__pycache__/
+*.py[cod]
+*$py.class
