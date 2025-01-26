@@ -176,7 +176,7 @@ def process_directory(dir_path, model, classes):
         # Get file creation time
         creation_time = datetime.fromtimestamp(os.path.getctime(file))
         year = str(creation_time.year)
-        year_tag = {"tag": year, "confidence": "100.00%"}
+        year_tag = {"tag": year, "confidence": ""}
         
         if file_ext in image_extensions:
             print(f"Processing image: {rel_path}")
@@ -192,8 +192,8 @@ def process_directory(dir_path, model, classes):
                 ]
 
                 dominant_color = get_dominant_color(file)
-                color_tag = {"tag": dominant_color, "confidence": "100.00%"}
-                type_tag = {"tag": "image", "confidence": "100.00%"}
+                color_tag = {"tag": dominant_color, "confidence": ""}
+                type_tag = {"tag": "image", "confidence": ""}
                 
                 final_tags = existing_tags if existing_tags else new_tags + [
                     color_tag,
@@ -205,7 +205,6 @@ def process_directory(dir_path, model, classes):
                     "type": "image",
                     "tags": final_tags,
                     "color": dominant_color,
-                    "dimensions": f"{dimensions[0]}x{dimensions[1]}",
                     "created": creation_time.isoformat(),  # Using creation time instead of current time
                     "file_size": os.path.getsize(file)
                 }
@@ -233,10 +232,6 @@ def process_directory(dir_path, model, classes):
     json_path.parent.mkdir(exist_ok=True)
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
-
-
-
-
 
 
 

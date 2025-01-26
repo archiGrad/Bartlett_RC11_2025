@@ -1,6 +1,7 @@
 let fileData = null;
 let fileContents = {};
-// Add this at the top of your JavaScript file
+
+
 const colorMap = {
     'red': '#FF0000',
     'green': '#008000',
@@ -15,20 +16,6 @@ const colorMap = {
     'gray': '#808080',
     'unknown': '#CCCCCC'
 };
-
-
-
-async function loadData() {
-    try {
-        const response = await fetch('data/tags.json');
-        fileData = await response.json();
-        console.log('Data loaded:', fileData);
-        // Pre-load text contents
-        await loadTextContents();
-    } catch (error) {
-        console.error('Error loading JSON:', error);
-    }
-}
 
 async function loadTextContents() {
     for (const [path, file] of Object.entries(fileData.files)) {
@@ -45,14 +32,17 @@ async function loadTextContents() {
 }
 
 
-
-
-
-
-
-
-
-
+async function loadData() {
+    try {
+        const response = await fetch('data/tags.json');
+        fileData = await response.json();
+        console.log('Data loaded:', fileData);
+        // Pre-load text contents
+        await loadTextContents();
+    } catch (error) {
+        console.error('Error loading JSON:', error);
+    }
+}
 
 
 function searchFiles(query) {
@@ -85,8 +75,6 @@ function searchFiles(query) {
 }
 
 
-
-
 function displayResults(results) {
     const resultsContainer = document.getElementById('results');
     
@@ -102,7 +90,6 @@ function displayResults(results) {
                 ${getFilePreview(result)}
             </div>
             <div class="result-info">
-                <div class="file-type">${result.type}</div>
                 <div class="file-path">${result.path}</div>
                 ${result.type === 'image' ? `
                     <div class="color-indicator">
@@ -130,18 +117,6 @@ function getFilePreview(result) {
     return '';
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function escapeHtml(unsafe) {
     return unsafe
         .replace(/&/g, "&amp;")
@@ -157,5 +132,4 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
     displayResults(results);
 });
 
-// Load data when page loads
 loadData();

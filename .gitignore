@@ -1,5 +1,5 @@
 # Python virtual environment
-venv/
+searchengine/
 
 # ImageNet classes file
 imagenet_classes.txt
