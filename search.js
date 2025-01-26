@@ -85,7 +85,7 @@ function displayResults(results) {
     
     resultsContainer.style.display = 'grid';
     resultsContainer.innerHTML = results.map(result => `
-        <div class="result-item">
+        <div class="result-item" onclick="openFile('data/${result.path}')">
             <div class="file-preview">
                 ${getFilePreview(result)}
             </div>
@@ -105,6 +105,10 @@ function displayResults(results) {
             </div>
         </div>
     `).join('');
+}
+
+function openFile(path) {
+    window.open(path, '_blank');
 }
 
 function getFilePreview(result) {

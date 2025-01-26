@@ -35,7 +35,6 @@ body {
 
 .result-item:hover {
     background: rgb(30,30,30);
-    transform: translateY(-2px);
 }
 
 .file-preview {
@@ -101,3 +100,23 @@ body {
     padding: 2px 8px;
 	color:red;
 }
+
+
+
+
+.result-item {
+    cursor: pointer;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
