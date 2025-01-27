@@ -186,21 +186,95 @@ def prepare_image(image_path):
 ```
 ### Model Setup Code
 
+ 
+# Model Setup and Prediction
+
+## 1. Model Setup
+The model setup process prepares ResNet50 for image classification:
+
+### Setup Steps
+1. Loading pre-trained weights
+2. Setting up the model
+3. Preparing for inference
+4. Loading class labels
+
+### Model Details
+- Uses ResNet50 architecture
+- Pre-trained on ImageNet dataset
+- Contains 50 layers of deep learning
+- Capable of recognizing 1000 different classes as seen in imagenet_classes.txt
+
+### Components Explained
+- **weights**:
+  - Uses DEFAULT weights from ImageNet
+  - Contains millions of pre-trained parameters
+  - Represents learned features from vast image dataset
+
+- **class_labels**:
+  - List of 1000 categories
+  - Matches model's output dimensions
+  - Used to convert numerical predictions to human-readable labels
+
+## 2. Making Predictions
+The prediction process converts image tensors into classification results:
+
+### Prediction Steps
+1. Running inference without gradients
+2. Sorting predictions by confidence
+3. Converting to probabilities
+4. Selecting top 5 results
+
+### Components Explained
+- **torch.no_grad()**:
+  - Disables gradient calculation
+
+- **model(image_tensor)**:
+  - Processes the image through all 50 layers
+  - Shape: (1, 1000) for single image
+
+- **Sorting and Probabilities**:
+  - Sort outputs by confidence (descending)
+  - Convert logits to percentages using softmax
+  - Scale to 0-100 range for readability
+
+### Return Format
+```python
+[
+    ("category1", 95.2),  # (class_name, confidence_percentage)
+    ("category2", 82.1),
+    ("category3", 76.5),
+    ("category4", 65.8),
+    ("category5", 45.2)
+]
+```
+
+### Implementation Code
 ```python
 def setup_model():
+    # Load pre-trained ResNet50 with latest weights
     weights = ResNet50_Weights.DEFAULT
     model = models.resnet50(weights=weights)
+    
+    # Set evaluation mode
     model.eval()
+    
+    # Get class labels
     class_labels = weights.meta["categories"]
+    
     return model, class_labels
 
 def get_image_prediction(model, classes, image_tensor):
+    # Disable gradient calculation for inference
     with torch.no_grad():
         outputs = model(image_tensor)
     
+    # Sort predictions by confidence
     _, indices = torch.sort(outputs, descending=True)
+    
+    # Convert to probabilities
     probabilities = torch.nn.functional.softmax(outputs, dim=1)[0] * 100
     
+    # Get top 5 predictions
     top5_predictions = [
         (classes[idx], probabilities[idx].item())
         for idx in indices[0][:5]
@@ -208,6 +282,9 @@ def get_image_prediction(model, classes, image_tensor):
     
     return top5_predictions
 ```
+
+
+
 
 ## Color Analysis
 Functions to extract and identify dominant colors from images.
