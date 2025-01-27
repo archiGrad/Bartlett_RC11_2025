@@ -128,25 +128,34 @@ searchengine\Scripts\activate
 pip install -r requirements.txt
 ```
 
-# Setting Up ResNet50 for Auto-Tagging Images
+# Auto-Tagging System Documentation
 
-## 1. Preparing Images
+## Table of Contents
+1. [ResNet50 Setup](#resnet50-setup)
+2. [Color Analysis](#color-analysis)
+3. [Text Analysis](#text-analysis)
+4. [Directory Processing](#directory-processing)
+5. [Main Program](#main-program)
+
+## ResNet50 Setup
+
+### 1. Preparing Images
 The image preparation process involves several key steps to make images compatible with ResNet:
 
-### Image Preparation Steps
+#### Image Preparation Steps
 1. Resizing to 256x256
 2. Center cropping to 224x224 (standard input size for ResNet)
 3. Converting to tensor
 4. Normalizing with ImageNet statistics
 
-### Tensor Conversion Details
+#### Tensor Conversion Details
 - Images start as pixels with RGB values (0-255)
 - A tensor is a multi-dimensional array optimized for neural networks
 - Changes pixel values from 0-255 to 0-1 range
 - Rearranges data from (height, width, channels) to (channels, height, width)
 - Makes the data compatible with PyTorch operations
 
-### Normalization Explanation
+#### Normalization Explanation
 - ResNet was trained on ImageNet, which has specific statistical properties
 - Normalization adjusts our image to match these properties
 - Ensures:
@@ -154,9 +163,8 @@ The image preparation process involves several key steps to make images compatib
   - The model's internal calculations work optimally
   - More consistent and reliable predictions
 
-## 2. Implementation Code
+### Implementation Code
 
-### Image Preparation Function
 ```python
 def prepare_image(image_path):
     try:
@@ -165,26 +173,17 @@ def prepare_image(image_path):
         
         # Define transformation pipeline
         transform = transforms.Compose([
-            # Resize the shortest side to 256 while maintaining aspect ratio
             transforms.Resize(256),
-            
-            # Take 224x224 center crop
             transforms.CenterCrop(224),
-            
-            # Convert PIL image to tensor (changes values to 0-1 range)
             transforms.ToTensor(),
-            
-            # Normalize using ImageNet statistics
             transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],  # RGB means
-                std=[0.229, 0.224, 0.225]    # RGB standard deviations
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
             )
         ])
         
         # Apply transformations
         img_tensor = transform(img)
-        
-        # Add batch dimension
         batch_tensor = torch.unsqueeze(img_tensor, 0)
         
         return batch_tensor, img.size
@@ -194,60 +193,36 @@ def prepare_image(image_path):
         return None, None
 ```
 
-### Return Values Explained
+#### Return Values Explained
+- **batch_tensor**:
+  - Format: 4-dimensional tensor (batch_size, channels, height, width)
+  - Dimensions: (1, 3, 224, 224)
+  - Shape transformation:
+    - Before unsqueeze: (3, 224, 224)
+    - After unsqueeze: (1, 3, 224, 224)
 
-#### batch_tensor
-- Format: 4-dimensional tensor (batch_size, channels, height, width)
-- Dimensions:
-  - batch_size = 1 (single image processing)
-  - channels = 3 (RGB channels)
-  - height = 224 (from crop)
-  - width = 224 (from crop)
-- Final shape: (1, 3, 224, 224)
+- **img.size**:
+  - Contains original dimensions (width, height)
+  - Example: (800, 600)
+  - Used for reference and metadata
 
-**Tensor Shape Transformation:**
-- Before unsqueeze: (3, 224, 224)
-- After unsqueeze: (1, 3, 224, 224)
+### Model Setup Code
 
-#### img.size
-- Contains original image dimensions (width, height)
-- Example: (800, 600) for an 800x600 pixel image
-- Uses:
-  - Reference purposes
-  - Scaling predictions back
-  - Maintaining aspect ratio information
-  - Metadata storage
-
-## 3. Model Setup
 ```python
 def setup_model():
-    # Load pre-trained ResNet50 with latest weights
     weights = ResNet50_Weights.DEFAULT
     model = models.resnet50(weights=weights)
-    
-    # Set evaluation mode
     model.eval()
-    
-    # Get class labels
     class_labels = weights.meta["categories"]
-    
     return model, class_labels
-```
 
-## 4. Making Predictions
-```python
 def get_image_prediction(model, classes, image_tensor):
-    # Disable gradient calculation for inference
     with torch.no_grad():
         outputs = model(image_tensor)
     
-    # Sort predictions by confidence
     _, indices = torch.sort(outputs, descending=True)
-    
-    # Convert to probabilities
     probabilities = torch.nn.functional.softmax(outputs, dim=1)[0] * 100
     
-    # Get top 5 predictions
     top5_predictions = [
         (classes[idx], probabilities[idx].item())
         for idx in indices[0][:5]
@@ -256,12 +231,8 @@ def get_image_prediction(model, classes, image_tensor):
     return top5_predictions
 ```
 
-
-
-
-# Color Analysis Functions
-# These functions extract and identify the dominant color from images by comparing RGB values
-# to a predefined color palette using Euclidean distance in RGB space.
+## Color Analysis
+Functions to extract and identify dominant colors from images.
 
 ```python
 def get_closest_color_name(rgb):
@@ -309,10 +280,10 @@ def get_dominant_color(image_path):
         return "unknown"
 ```
 
-# Text Analysis Function
-# A simple text tokenizer that cleans text, removes common words,
-# and returns the top 5 most frequent meaningful words with their percentages.
-### Processing Steps:
+## Text Analysis
+Text tokenizer that processes content and extracts key terms.
+
+### Processing Steps
 1. Text Cleanup:
    - Converts to lowercase
    - Removes punctuation
@@ -320,13 +291,10 @@ def get_dominant_color(image_path):
    - Removes stop words
    - Keeps alphanumeric words
    - Removes words ≤ 2 characters
-
 2. Analysis:
    - Counts word frequency
    - Calculates word percentages
    - Returns top 5 frequent words
-This function scans a directory for images and text files, processes each file to generate tags (using image recognition for images and text analysis for text files), and saves all the metadata (tags, file info, creation dates, colors for images) into a JSON file at 'data/tags.json'. For images, it generates tags based on what the AI model recognizes, dominant colors, and creation dates, while for text files it extracts key words and metadata - all of this creates a searchable database of file information.
-
 
 ```python
 def analyze_text(text_path):
@@ -356,14 +324,10 @@ def analyze_text(text_path):
         return []
 ```
 
+## Directory Processing
+Central function that processes files and generates the tag database.
 
-
-
-# Directory Processing Function
-# Scans a directory for images and text files, processes each file to generate tags,
-# and saves all metadata (tags, file info, creation dates, colors) into a JSON file.
-
-### Function Overview:
+### Overview
 1. Loads/creates JSON storage
 2. Recursively scans directory
 3. For each file:
@@ -376,7 +340,6 @@ def analyze_text(text_path):
 ```python
 def process_directory(dir_path, model, classes):
     json_path = Path('data/tags.json')
-    
     data = {"files": {}}
     
     if json_path.exists():
@@ -400,7 +363,6 @@ def process_directory(dir_path, model, classes):
     for file in Path(dir_path).rglob('*'):
         rel_path = str(file.relative_to(dir_path))
         file_ext = file.suffix.lower()
-        # Get filename without extension as tag
         filename = file.stem.lower()
         filename_tag = {"tag": filename, "confidence": "100.00%"}
         
@@ -462,19 +424,14 @@ def process_directory(dir_path, model, classes):
                 "last_analyzed": datetime.now().isoformat(),
                 "file_size": os.path.getsize(file)
             }
+    
     json_path.parent.mkdir(exist_ok=True)
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
 ```
 
-# Main Program Entry Point
-# Sets up the ResNet model and processes all files in the 'data' directory
-### What this does:
-1. Initializes the ML model when script runs
-2. Processes all files in 'data' directory
-3. Entry point check prevents automatic execution if imported as module
-
-
+## Main Program
+Entry point of the application.
 
 ```python
 def main():
@@ -490,15 +447,3 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
