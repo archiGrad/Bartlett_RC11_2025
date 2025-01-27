@@ -28,28 +28,8 @@ A search engine that analyzes images and text files, extracting features like do
 ├── styles.css       # Styling
 ├── search.js        # Search functionality
 ├── tags.py         # Analysis engine
+├── imagenet_classes.txt         
 └── requirements.txt # Python dependencies
-```
-
-## JSON Output Format
-
-```json
-{
-  "files": {
-    "example_filename.png": {
-      "type": "image",
-      "tags": [
-        {
-          "tag": "architecture",
-          "confidence": "75.50%"
-        }
-      ],
-      "color": "example_color",
-      "created": "YYYY-MM-DDThh:mm:ss.ssssss",
-      "file_size": 123456
-    }
-  }
-}
 ```
 
 ## Usage
@@ -93,9 +73,6 @@ The project consists of three main components:
 
 
 
-
-
-## python workflow
 
 
 ## Setup
@@ -163,6 +140,21 @@ The image preparation process involves several key steps to make images compatib
   - The model's internal calculations work optimally
   - More consistent and reliable predictions
 
+#### Return Values Explained
+- **batch_tensor**:
+  - Format: 4-dimensional tensor (batch_size, channels, height, width)
+  - Dimensions: (1, 3, 224, 224)
+  - Shape transformation:
+    - Before unsqueeze: (3, 224, 224)
+    - After unsqueeze: (1, 3, 224, 224)
+
+- **img.size**:
+  - Contains original dimensions (width, height)
+  - Example: (800, 600)
+  - Used for reference and metadata
+
+
+
 ### Implementation Code
 
 ```python
@@ -192,20 +184,6 @@ def prepare_image(image_path):
         print(f"Error processing {image_path}: {e}")
         return None, None
 ```
-
-#### Return Values Explained
-- **batch_tensor**:
-  - Format: 4-dimensional tensor (batch_size, channels, height, width)
-  - Dimensions: (1, 3, 224, 224)
-  - Shape transformation:
-    - Before unsqueeze: (3, 224, 224)
-    - After unsqueeze: (1, 3, 224, 224)
-
-- **img.size**:
-  - Contains original dimensions (width, height)
-  - Example: (800, 600)
-  - Used for reference and metadata
-
 ### Model Setup Code
 
 ```python
@@ -316,7 +294,7 @@ def analyze_text(text_path):
         top_words = word_freq.most_common(5)
         
         return [
-            {"tag": word, "confidence": f"{(count/total_words*100):.2f}%"}
+            {"tag": word, "confidence":""}
             for word, count in top_words
         ]
     except Exception as e:
@@ -335,7 +313,26 @@ Central function that processes files and generates the tag database.
    - Processes images: gets ML predictions, color, dimensions
    - Processes texts: analyzes content
    - Adds tags and metadata to JSON
-4. Saves all data to tags.json
+4. Saves all data to tags.json with the following file structure.
+
+```json
+{
+  "files": {
+    "example_filename.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "architecture",
+          "confidence": "75.50%"
+        }
+      ],
+      "color": "example_color",
+      "created": "YYYY-MM-DDThh:mm:ss.ssssss",
+      "file_size": 123456
+    }
+  }
+}
+```
 
 ```python
 def process_directory(dir_path, model, classes):
