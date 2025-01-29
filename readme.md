@@ -640,38 +640,305 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-### Components Overview
 
-#### 1. Search Interface
-- Search bar with real-time suggestions
-- Filter options for file types
-- Tag-based filtering system
+## frontend
 
-#### 2. Results Display
-- Grid/list view toggle
-- File previews
-- Tag visualization
-- Metadata display
-
-#### 3. Filter Panel
-- File type filters
-- Date range selection
-- Color filters (for images)
-- Tag frequency display
-
-### Implementation Steps
-1. Basic Layout Setup
-2. Search Functionality
-3. Results Display
-4. Filter Implementation
-5. Responsive Design
-6. Performance Optimization
-
-
+### html
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search files by tags..."
+        >
+        <div id="results" class="results-container"></div>
+    </div>
+    <script src="search.js"></script>
+</body>
+</html>
+```
 
 
+### style.css
+
+``` css
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: monospace ;
+	background: black;
+	color: white;
+}
+
+.search-container {
+    margin:0  100px;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    font-size: 16px;
+    outline: none;
+    margin: 20px auto 40px;
+    display: block;
+	color: white;
+	background: black;
+	border-radius: 30px;
+	border: 1px solid grey;
+}
 
 
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+
+.result-item:hover {
+    background: rgb(30,30,30);
+}
+
+.file-preview {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.file-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-content {
+    height: 200px;
+    padding: 15px;
+    overflow-y: auto;
+    font-family: monospace;
+    Font-size: 14px;
+    line-height: 1.4;
+}
+
+.result-info {
+    padding: 15px;
+}
+
+.file-path {
+    font-size: 14px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.tag {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.color-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+	border-radius:12px;
+}
+
+.file-type {
+    padding: 2px 8px;
+	color:red;
+}
+
+
+
+
+.result-item {
+    cursor: pointer;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
+```
+
+
+### search.js
+
+``` javascript
+let fileData = null;
+let fileContents = {};
+
+
+const colorMap = {
+    'red': '#FF0000',
+    'green': '#008000',
+    'blue': '#0000FF',
+    'black': '#000000',
+    'white': '#FFFFFF',
+    'yellow': '#FFFF00',
+    'purple': '#800080',
+    'orange': '#FFA500',
+    'brown': '#A52A2A',
+    'pink': '#FFC0CB',
+    'gray': '#808080',
+    'unknown': '#CCCCCC'
+};
+
+async function loadTextContents() {
+    for (const [path, file] of Object.entries(fileData.files)) {
+        if (file.type === 'text') {
+            try {
+                const response = await fetch('data/' + path);
+                fileContents[path] = await response.text();
+            } catch (error) {
+                console.error(`Error loading text file ${path}:`, error);
+                fileContents[path] = 'Error loading file content';
+            }
+        }
+    }
+}
+
+
+async function loadData() {
+    try {
+        const response = await fetch('data/tags.json');
+        fileData = await response.json();
+        console.log('Data loaded:', fileData);
+        // Pre-load text contents
+        await loadTextContents();
+    } catch (error) {
+        console.error('Error loading JSON:', error);
+    }
+}
+
+
+function searchFiles(query) {
+    if (!fileData || !query) return [];
+    
+    query = query.toLowerCase();
+    const searchTerms = query.split(/\s+/); // Split on whitespace
+    const results = [];
+    
+    for (const [path, file] of Object.entries(fileData.files)) {
+        // Check if all search terms match
+        const hasAllTerms = searchTerms.every(term => {
+            return file.tags.some(tagObj => {
+                const tagText = tagObj.tag.toLowerCase();
+                // Check if the tag contains the term or if multiple tags together match the term
+                return tagText.includes(term) || 
+                       file.tags.map(t => t.tag.toLowerCase()).join(' ').includes(term);
+            });
+        });
+        
+        if (hasAllTerms) {
+            results.push({
+                path,
+                ...file
+            });
+        }
+    }
+    
+    return results;
+}
+
+
+function displayResults(results) {
+    const resultsContainer = document.getElementById('results');
+    
+    if (results.length === 0) {
+        resultsContainer.style.display = 'none';
+        return;
+    }
+    
+    resultsContainer.style.display = 'grid';
+    resultsContainer.innerHTML = results.map(result => `
+        <div class="result-item" onclick="openFile('data/${result.path}')">
+            <div class="file-preview">
+                ${getFilePreview(result)}
+            </div>
+            <div class="result-info">
+                <div class="file-path">${result.path}</div>
+                ${result.type === 'image' ? `
+                    <div class="color-indicator">
+                        <span class="color-dot" style="background-color: ${colorMap[result.color] || result.color}"></span>
+                        <span>${result.color}</span>
+                    </div>
+                ` : ''}
+                <div class="tags">
+                    ${result.tags.map(tag => 
+                        `<span class="tag">${tag.tag} (${tag.confidence})</span>`
+                    ).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function openFile(path) {
+    window.open(path, '_blank');
+}
+
+function getFilePreview(result) {
+    if (result.type === 'image') {
+        return `<img src="data/${result.path}" alt="${result.path}">`;
+    } else if (result.type === 'text') {
+        const content = fileContents[result.path] || 'Loading...';
+        return `<div class="text-content">${escapeHtml(content)}</div>`;
+    }
+    return '';
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const query = e.target.value.trim();
+    const results = searchFiles(query);
+    displayResults(results);
+});
+
+loadData();
+```
 
 
 
