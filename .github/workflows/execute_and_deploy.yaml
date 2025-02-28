@@ -1,4 +1,4 @@
-name: Generate Tags and Deploy to GitHub Pages
+name: Generate Tag.py and Deploy to GitHub Pages
 
 on:
   push:
@@ -23,9 +23,9 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run tags.py to generate tags
+      - name: Run tag.py to generate tags
         run: |
-          python tags.py
+          python tag.py
         
       - name: Check generated tag file
         run: |
