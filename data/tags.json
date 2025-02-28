@@ -1,0 +1,450 @@
+{
+  "files": {
+    "monkey/monkey.glb": {
+      "type": "3d",
+      "tags": [
+        {
+          "tag": "suzanne",
+          "confidence": "33.33%"
+        },
+        {
+          "tag": "monkey",
+          "confidence": "33.33%"
+        },
+        {
+          "tag": "texture",
+          "confidence": "33.33%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "3d",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "monkey",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-02-28T13:37:30.048865",
+      "file_size": 8378260,
+      "thumbnail": "monkey/thumbnail.png"
+    },
+    "satellite.jpeg": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "wing",
+          "confidence": "12.13%"
+        },
+        {
+          "tag": "seashore",
+          "confidence": "6.17%"
+        },
+        {
+          "tag": "cliff",
+          "confidence": "5.34%"
+        },
+        {
+          "tag": "jigsaw puzzle",
+          "confidence": "3.99%"
+        },
+        {
+          "tag": "alp",
+          "confidence": "2.79%"
+        },
+        {
+          "tag": "gray",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "satellite",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "gray",
+      "dimensions": "3858x4096",
+      "last_analyzed": "2025-02-28T13:37:30.405097",
+      "file_size": 2891287
+    },
+    "Telemetry_data_architecture_workshop3.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "garbage truck",
+          "confidence": "5.61%"
+        },
+        {
+          "tag": "solar dish",
+          "confidence": "3.94%"
+        },
+        {
+          "tag": "racer",
+          "confidence": "3.00%"
+        },
+        {
+          "tag": "jeep",
+          "confidence": "2.53%"
+        },
+        {
+          "tag": "tow truck",
+          "confidence": "2.47%"
+        },
+        {
+          "tag": "gray",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "telemetry_data_architecture_workshop3",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "gray",
+      "dimensions": "1918x919",
+      "last_analyzed": "2025-02-28T13:37:30.654008",
+      "file_size": 2650949
+    },
+    "2024-09-26-173504_1913x920_scrot.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "comic book",
+          "confidence": "14.42%"
+        },
+        {
+          "tag": "umbrella",
+          "confidence": "3.74%"
+        },
+        {
+          "tag": "padlock",
+          "confidence": "2.58%"
+        },
+        {
+          "tag": "quilt",
+          "confidence": "2.21%"
+        },
+        {
+          "tag": "shoe shop",
+          "confidence": "1.90%"
+        },
+        {
+          "tag": "brown",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2024-09-26-173504_1913x920_scrot",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "brown",
+      "dimensions": "1913x920",
+      "last_analyzed": "2025-02-28T13:37:29.409636",
+      "file_size": 2709314
+    },
+    "totem/totem.glb": {
+      "type": "3d",
+      "tags": [
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "3d",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "totem",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-02-28T13:37:30.474732",
+      "file_size": 6876568,
+      "thumbnail": "totem/thumbnail.png"
+    },
+    "2024-09-26-173618_1920x924_scrot.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "comic book",
+          "confidence": "59.09%"
+        },
+        {
+          "tag": "bookshop",
+          "confidence": "4.09%"
+        },
+        {
+          "tag": "solar dish",
+          "confidence": "2.46%"
+        },
+        {
+          "tag": "cassette",
+          "confidence": "1.66%"
+        },
+        {
+          "tag": "book jacket",
+          "confidence": "0.96%"
+        },
+        {
+          "tag": "brown",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2024-09-26-173618_1920x924_scrot",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "brown",
+      "dimensions": "1920x924",
+      "last_analyzed": "2025-02-28T13:37:29.117851",
+      "file_size": 2559534
+    },
+    "2024-11-07-091701_1431x992_scrot.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "maze",
+          "confidence": "13.96%"
+        },
+        {
+          "tag": "damselfly",
+          "confidence": "3.51%"
+        },
+        {
+          "tag": "bow",
+          "confidence": "3.04%"
+        },
+        {
+          "tag": "reel",
+          "confidence": "1.98%"
+        },
+        {
+          "tag": "pole",
+          "confidence": "1.67%"
+        },
+        {
+          "tag": "gray",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2024-11-07-091701_1431x992_scrot",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "gray",
+      "dimensions": "1431x992",
+      "last_analyzed": "2025-02-28T13:37:30.047673",
+      "file_size": 3197494
+    },
+    "daniel_fspy.fspy.jpg": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "barbershop",
+          "confidence": "10.80%"
+        },
+        {
+          "tag": "bakery",
+          "confidence": "7.05%"
+        },
+        {
+          "tag": "restaurant",
+          "confidence": "4.46%"
+        },
+        {
+          "tag": "mailbox",
+          "confidence": "2.61%"
+        },
+        {
+          "tag": "freight car",
+          "confidence": "2.23%"
+        },
+        {
+          "tag": "gray",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "daniel_fspy.fspy",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "gray",
+      "dimensions": "4624x3468",
+      "last_analyzed": "2025-02-28T13:37:29.769682",
+      "file_size": 3251183
+    },
+    "suzanne/suzanne.glb": {
+      "type": "3d",
+      "tags": [
+        {
+          "tag": "monkey",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "3d",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "suzanne",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-02-28T13:37:29.118863",
+      "file_size": 69624,
+      "thumbnail": null
+    },
+    "heatmap/heatmap.glb": {
+      "type": "3d",
+      "tags": [
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "3d",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "heatmap",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-02-28T13:37:29.118996",
+      "file_size": 3247384,
+      "thumbnail": "heatmap/thumbnail.png"
+    },
+    "New Folder/test.glb": {
+      "type": "3d",
+      "tags": [
+        {
+          "tag": "monkey",
+          "confidence": "25.00%"
+        },
+        {
+          "tag": "architecture",
+          "confidence": "25.00%"
+        },
+        {
+          "tag": "suzanne",
+          "confidence": "25.00%"
+        },
+        {
+          "tag": "pink",
+          "confidence": "25.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "february",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "3d",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "new folder",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-02-28T13:37:30.048528",
+      "file_size": 1387512,
+      "thumbnail": "New Folder/thumbnail.png"
+    }
+  }
+}

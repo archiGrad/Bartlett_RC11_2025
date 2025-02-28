@@ -1,0 +1,296 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: monospace ;
+	background: black;
+	color: white;
+}
+
+.search-container {
+    margin:0  100px;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    font-size: 16px;
+    outline: none;
+    margin: 20px auto 40px;
+    display: block;
+	color: white;
+	background: black;
+	border-radius: 30px;
+	border: 1px solid grey;
+}
+
+
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+
+.result-item:hover {
+    background: rgb(30,30,30);
+}
+
+.file-preview {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.file-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-content {
+    height: 200px;
+    padding: 15px;
+    overflow-y: auto;
+    font-family: monospace;
+    Font-size: 14px;
+    line-height: 1.4;
+}
+
+.result-info {
+    padding: 15px;
+}
+
+.file-path {
+    font-size: 14px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.tag {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.color-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+	border-radius:12px;
+}
+
+.file-type {
+    padding: 2px 8px;
+	color:red;
+}
+
+
+
+
+.result-item {
+    cursor: pointer;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+/* 3D Model styles */
+.model-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.model-icon {
+    opacity: 0.7;
+}
+
+.model-label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.view-3d-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.view-3d-btn:hover {
+    background-color: #3a7ac8;
+}
+
+
+.model-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    height: 100%;
+    color: #666;
+    font-size: 14px;
+}
+
+.model-icon {
+    margin-bottom: 10px;
+}
+
+/* View 3D button */
+.view-3d-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.view-3d-btn:hover {
+    background: #357ABD;
+}
+
+
+/* Update the modal-content CSS */
+.modal-content {
+    position: relative;
+    background-color: transparent; /* Changed from #fff to transparent */
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 900px;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: none; /* Removed shadow */
+}
+
+#model-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: transparent; /* Added transparent background */
+}
+
+/* Update the modal background to be less opaque if desired */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.3); /* Changed from 0.5 to 0.3 for lighter background */
+}
+
+
+
+
+
+
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1001;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+
+.model-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.view-3d-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.model-placeholder {
+    position: relative;
+}
+
+.model-placeholder:hover .view-3d-overlay {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
