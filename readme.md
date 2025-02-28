@@ -862,7 +862,7 @@ loadData();
 ## search.js file modifications
 
 
-```
+```js
 // New global variable to track current 3D model
 let currentModel = null;
 
@@ -986,7 +986,7 @@ function initThreeJsViewer(modelUrl) {
 
 ## python tag generation updates
 
-```
+```py
 # Added 3D model file extensions
 model_extensions = {'.glb'}
 
@@ -1047,7 +1047,7 @@ def process_directory(dir_path, model, classes):
 ## css modifications
 
 
-```
+```css
 /* 3D Model styles */
 .model-placeholder {
     /* New styles for placeholder when 3D model is not loaded */
