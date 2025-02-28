@@ -114,102 +114,218 @@ def analyze_text(text_path):
        print(f"Error processing text file {text_path}: {e}")
        return []
 
+
 def process_directory(dir_path, model, classes):
-   json_path = Path('data/tags.json')
-   
-   data = {"files": {}}
-   
-   if json_path.exists():
-       try:
-           with open(json_path, 'r') as f:
-               content = f.read().strip()
-               if content:
-                   data = json.loads(content)
-                   if "images" in data and "files" not in data:
-                       data["files"] = data["images"]
-                       del data["images"]
-                   elif "files" not in data:
-                       data["files"] = {}
-       except json.JSONDecodeError:
-           print("Warning: Invalid JSON file, starting fresh")
-           data = {"files": {}}
-   
-   image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp'}
-   text_extensions = {'.txt'}
-   
-   for file in Path(dir_path).rglob('*'):
-       rel_path = str(file.relative_to(dir_path))
-       file_ext = file.suffix.lower()
+    json_path = Path('data/tags.json')
+    
+    data = {"files": {}}
+    
+    if json_path.exists():
+        try:
+            with open(json_path, 'r') as f:
+                content = f.read().strip()
+                if content:
+                    data = json.loads(content)
+                    if "images" in data and "files" not in data:
+                        data["files"] = data["images"]
+                        del data["images"]
+                    elif "files" not in data:
+                        data["files"] = {}
+        except json.JSONDecodeError:
+            print("Warning: Invalid JSON file, starting fresh")
+            data = {"files": {}}
+    
+    image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp'}
+    text_extensions = {'.txt'}
+    model_extensions = {'.glb'}
+    
+    # First process regular files
+    for file in Path(dir_path).glob('*'):
+        if file.is_dir():
+            print(f"Processing model folder: {file.name}")
+            
+            # Look for .glb file in folder (using same name as folder)
+            model_files = list(file.glob('*.glb'))
+            if not model_files:
+                print(f"No model files found in {file.name}")
+                continue
+                
+            model_file = model_files[0]  # Use the first GLB file found
+            model_rel_path = str(model_file.relative_to(dir_path))
+            
+            # Look for thumbnail
+            thumbnail_files = list(file.glob('thumbnail.*'))
+            thumbnail_rel_path = None
+            if thumbnail_files:
+                thumbnail_rel_path = str(thumbnail_files[0].relative_to(dir_path))
+            
+            # Look for tags in txt file
+            tag_files = list(file.glob('*.txt'))
+            model_tags = []
+            if tag_files:
+                model_tags = analyze_text(tag_files[0])
+            
+            filename = file.name.lower()
+            filename_tag = {"tag": filename, "confidence": "100.00%"}
+            
+            creation_time = datetime.fromtimestamp(os.path.getctime(model_file))
+            year = str(creation_time.year)
+            month = creation_time.strftime("%B").lower()
+            year_tag = {"tag": year, "confidence": "100.00%"}
+            month_tag = {"tag": month, "confidence": "100.00%"}
+            type_tag = {"tag": "3d", "confidence": "100.00%"}
+            
+            existing_entry = data["files"].get(model_rel_path, {})
+            existing_tags = existing_entry.get("tags", [])
+            
+            final_tags = existing_tags if existing_tags else model_tags + [
+                year_tag,
+                month_tag,
+                type_tag,
+                filename_tag
+            ]
+            
+            data["files"][model_rel_path] = {
+                "type": "3d",
+                "tags": final_tags,
+                "last_analyzed": datetime.now().isoformat(),
+                "file_size": os.path.getsize(model_file),
+                "thumbnail": thumbnail_rel_path
+            }
+        
+        elif file.suffix.lower() in image_extensions:
+            rel_path = str(file.relative_to(dir_path))
+            print(f"Processing image: {rel_path}")
+            
+            image_tensor, dimensions = prepare_image(file)
+            if image_tensor is not None:
+                existing_entry = data["files"].get(rel_path, {})
+                existing_tags = existing_entry.get("tags", [])
 
-       # Get filename without extension as tag
-       filename = file.stem.lower()
-       filename_tag = {"tag": filename, "confidence": "100.00%"}
-       
-       creation_time = datetime.fromtimestamp(os.path.getctime(file))
-       year = str(creation_time.year)
-       month = creation_time.strftime("%B").lower()
-       year_tag = {"tag": year, "confidence": "100.00%"}
-       month_tag = {"tag": month, "confidence": "100.00%"}
-       
-       if file_ext in image_extensions:
-           print(f"Processing image: {rel_path}")
-           image_tensor, dimensions = prepare_image(file)
-           if image_tensor is not None:
-               existing_entry = data["files"].get(rel_path, {})
-               existing_tags = existing_entry.get("tags", [])
+                predictions = get_image_prediction(model, classes, image_tensor)
+                new_tags = [
+                    {"tag": tag, "confidence": f"{conf:.2f}%"}
+                    for tag, conf in predictions
+                ]
 
-               predictions = get_image_prediction(model, classes, image_tensor)
-               new_tags = [
-                   {"tag": tag, "confidence": f"{conf:.2f}%"}
-                   for tag, conf in predictions
-               ]
+                dominant_color = get_dominant_color(file)
+                color_tag = {"tag": dominant_color, "confidence": "100.00%"}
+                
+                filename = file.stem.lower()
+                filename_tag = {"tag": filename, "confidence": "100.00%"}
+                
+                creation_time = datetime.fromtimestamp(os.path.getctime(file))
+                year = str(creation_time.year)
+                month = creation_time.strftime("%B").lower()
+                year_tag = {"tag": year, "confidence": "100.00%"}
+                month_tag = {"tag": month, "confidence": "100.00%"}
+                type_tag = {"tag": "image", "confidence": "100.00%"}
+                
+                final_tags = existing_tags if existing_tags else new_tags + [
+                    color_tag,
+                    year_tag,
+                    month_tag,
+                    type_tag,
+                    filename_tag
+                ]
+                
+                data["files"][rel_path] = {
+                    "type": "image",
+                    "tags": final_tags,
+                    "color": dominant_color,
+                    "dimensions": f"{dimensions[0]}x{dimensions[1]}",
+                    "last_analyzed": datetime.now().isoformat(),
+                    "file_size": os.path.getsize(file)
+                }
+                
+        elif file.suffix.lower() in text_extensions:
+            rel_path = str(file.relative_to(dir_path))
+            print(f"Processing text: {rel_path}")
+            
+            existing_entry = data["files"].get(rel_path, {})
+            existing_tags = existing_entry.get("tags", [])
 
-               dominant_color = get_dominant_color(file)
-               color_tag = {"tag": dominant_color, "confidence": "100.00%"}
-               type_tag = {"tag": "image", "confidence": "100.00%"}
-               
-               final_tags = existing_tags if existing_tags else new_tags + [
-                   color_tag,
-                   year_tag,
-                   month_tag,
-                   type_tag,
-                   filename_tag
-               ]
-               
-               data["files"][rel_path] = {
-                   "type": "image",
-                   "tags": final_tags,
-                   "color": dominant_color,
-                   "dimensions": f"{dimensions[0]}x{dimensions[1]}",
-                   "last_analyzed": datetime.now().isoformat(),
-                   "file_size": os.path.getsize(file)
-               }
-               
-       elif file_ext in text_extensions:
-           print(f"Processing text: {rel_path}")
-           existing_entry = data["files"].get(rel_path, {})
-           existing_tags = existing_entry.get("tags", [])
+            new_tags = analyze_text(file)
+            
+            filename = file.stem.lower()
+            filename_tag = {"tag": filename, "confidence": "100.00%"}
+            
+            creation_time = datetime.fromtimestamp(os.path.getctime(file))
+            year = str(creation_time.year)
+            month = creation_time.strftime("%B").lower()
+            year_tag = {"tag": year, "confidence": "100.00%"}
+            month_tag = {"tag": month, "confidence": "100.00%"}
+            type_tag = {"tag": "text", "confidence": "100.00%"}
+            
+            final_tags = existing_tags if existing_tags else new_tags + [
+                year_tag,
+                month_tag,
+                type_tag,
+                filename_tag
+            ]
+            
+            data["files"][rel_path] = {
+                "type": "text",
+                "tags": final_tags,
+                "last_analyzed": datetime.now().isoformat(),
+                "file_size": os.path.getsize(file)
+            }
+        
+        elif file.suffix.lower() in model_extensions:
+            rel_path = str(file.relative_to(dir_path))
+            print(f"Processing standalone 3D model: {rel_path}")
+            
+            # Look for companion text file
+            txt_path = file.with_suffix('.txt')
+            model_tags = []
+            if txt_path.exists():
+                model_tags = analyze_text(txt_path)
+            
+            filename = file.stem.lower()
+            filename_tag = {"tag": filename, "confidence": "100.00%"}
+            
+            creation_time = datetime.fromtimestamp(os.path.getctime(file))
+            year = str(creation_time.year)
+            month = creation_time.strftime("%B").lower()
+            year_tag = {"tag": year, "confidence": "100.00%"}
+            month_tag = {"tag": month, "confidence": "100.00%"}
+            type_tag = {"tag": "3d", "confidence": "100.00%"}
+            
+            existing_entry = data["files"].get(rel_path, {})
+            existing_tags = existing_entry.get("tags", [])
+            
+            final_tags = existing_tags if existing_tags else model_tags + [
+                year_tag,
+                month_tag,
+                type_tag,
+                filename_tag
+            ]
+            
+            data["files"][rel_path] = {
+                "type": "3d",
+                "tags": final_tags,
+                "last_analyzed": datetime.now().isoformat(),
+                "file_size": os.path.getsize(file)
+            }
 
-           new_tags = analyze_text(file)
-           type_tag = {"tag": "text", "confidence": "100.00%"}
-           
-           final_tags = existing_tags if existing_tags else new_tags + [
-               year_tag,
-               month_tag,
-               type_tag,
-               filename_tag
-           ]
-           
-           data["files"][rel_path] = {
-               "type": "text",
-               "tags": final_tags,
-               "last_analyzed": datetime.now().isoformat(),
-               "file_size": os.path.getsize(file)
-           }
+    json_path.parent.mkdir(exist_ok=True)
+    with open(json_path, 'w') as f:
+        json.dump(data, f, indent=2)
 
-   json_path.parent.mkdir(exist_ok=True)
-   with open(json_path, 'w') as f:
-       json.dump(data, f, indent=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def main():
    print("Setting up model...")

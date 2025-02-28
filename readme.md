@@ -838,6 +838,192 @@ loadData();
 
 
 
+update 2
+adding 3d support
+
+changes to first commit
+
+
+uindex file
+
+<!-- ADDED SECTION -->
+<!-- Three.js libraries with known working links -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://unpkg.com/three@0.126.0/examples/js/controls/OrbitControls.js"></script>
+
+<!-- ADDED ATTRIBUTE -->
+<input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search files by tags..."
+    autocomplete="off" <!-- New attribute -->
+>
+
+
+search.js file
+
+// NEW VARIABLE
+let currentModel = null;
+
+// ADDED/MODIFIED FUNCTIONS
+function displayResults(results) {
+    // ADDED: New elements in the result HTML
+    resultsContainer.innerHTML = results.map(result => `
+        <div class="result-item">
+            <!-- ADDED -->
+            <div class="file-type">${result.type}</div>
+            
+            <!-- ADDED FOR 3D FILES -->
+            ${result.type === '3d' ? `
+                <button class="view-3d-btn" data-path="${result.path}">View 3D Model</button>
+            ` : ''}
+        </div>
+    `);
+
+    // ADDED: Event listeners for 3D model buttons
+    document.querySelectorAll('.view-3d-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const modelPath = this.getAttribute('data-path');
+            openModelViewer(modelPath);
+        });
+    });
+}
+
+function getFilePreview(result) {
+    // ADDED: 3D file preview logic
+    if (result.type === '3d') {
+        if (result.thumbnail) {
+            return `<div class="model-placeholder">
+                        <img src="data/${result.thumbnail}" alt="${result.path}" class="model-thumbnail">
+                    </div>`;
+        } else {
+            return `<div class="model-placeholder">
+                        <div class="model-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24">
+                                <path fill="#666" d="M12,0L3,7L4,8.18V16.18L12,21L20,16.18V8.18L21,7L12,0M12,2.5L17.5,6.5L12,10.5L6.5,6.5L12,2.5M5,9.21V15.07L11,19V13.35L5,9.21M19,9.21L13,13.35V19L19,15.07V9.21Z"/>
+                            </svg>
+                        </div>
+                        <div>3D Model Preview</div>
+                    </div>`;
+        }
+    }
+}
+
+// COMPLETELY NEW FUNCTIONS
+function openModelViewer(modelPath) {
+    let modal = document.getElementById('model-viewer-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'model-viewer-modal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="model-container"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        modal.querySelector('.close-modal').addEventListener('click', closeModelViewer);
+    }
+    
+    modal.style.display = 'block';
+    initThreeJsViewer('data/' + modelPath);
+}
+
+function closeModelViewer() {
+    const modal = document.getElementById('model-viewer-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    
+    if (currentModel) {
+        currentModel.dispose();
+        currentModel = null;
+    }
+}
+
+function initThreeJsViewer(modelUrl) {
+    // Comprehensive Three.js model viewer implementation
+    // (Full implementation omitted for brevity, but includes scene setup, 
+    // model loading, lighting, camera controls, etc.)
+    // Highlights: 
+    // - Uses THREE.GLTFLoader
+    // - Adds OrbitControls
+    // - Handles model centering and scaling
+    // - Provides loading progress
+}
+
+
+
+
+
+
+in python fileA
+
+
+
+
+
+i# ADDED SECTION
+model_extensions = {'.glb'}  # New file extension types for 3D models
+
+# MODIFIED process_directory FUNCTION
+def process_directory(dir_path, model, classes):
+    # NEW BLOCK: Processing 3D model folders
+    for file in Path(dir_path).glob('*'):
+        if file.is_dir():
+            print(f"Processing model folder: {file.name}")
+            
+            # Look for .glb file in folder (using same name as folder)
+            model_files = list(file.glob('*.glb'))
+            if not model_files:
+                print(f"No model files found in {file.name}")
+                continue
+                
+            model_file = model_files[0]  # Use the first GLB file found
+            model_rel_path = str(model_file.relative_to(dir_path))
+            
+            # Look for thumbnail
+            thumbnail_files = list(file.glob('thumbnail.*'))
+            thumbnail_rel_path = None
+            if thumbnail_files:
+                thumbnail_rel_path = str(thumbnail_files[0].relative_to(dir_path))
+            
+            # Look for tags in txt file
+            tag_files = list(file.glob('*.txt'))
+            model_tags = []
+            if tag_files:
+                model_tags = analyze_text(tag_files[0])
+            
+            # DATA STRUCTURE FOR 3D MODELS WITH THUMBNAILS
+            data["files"][model_rel_path] = {
+                "type": "3d",
+                "tags": final_tags,
+                "last_analyzed": datetime.now().isoformat(),
+                "file_size": os.path.getsize(model_file),
+                "thumbnail": thumbnail_rel_path  # NEW FIELD
+            }
+        
+        # NEW BLOCK: Processing standalone 3D model files
+        elif file.suffix.lower() in model_extensions:
+            rel_path = str(file.relative_to(dir_path))
+            print(f"Processing standalone 3D model: {rel_path}")
+            
+            # Look for companion text file
+            txt_path = file.with_suffix('.txt')
+            model_tags = []
+            if txt_path.exists():
+                model_tags = analyze_text(txt_path)
+            
+            # ADDED DATA STRUCTURE FOR STANDALONE 3D MODELS
+            data["files"][rel_path] = {
+                "type": "3d",
+                "tags": final_tags,
+                "last_analyzed": datetime.now().isoformat(),
+                "file_size": os.path.getsize(file)
+            }
 
 
 
@@ -845,21 +1031,104 @@ loadData();
 
 
 
+in css
 
 
 
+/* ADDED SECTIONS */
 
+/* 3D Model styles */
+.model-placeholder {
+    /* New styles for placeholder when 3D model is not loaded */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    height: 100%;
+    color: #666;
+    font-size: 14px;
+}
 
+.model-icon {
+    margin-bottom: 10px;
+}
 
+/* View 3D button */
+.view-3d-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
 
+.view-3d-btn:hover {
+    background: #357ABD;
+}
 
+/* Modal styles for 3D model viewer */
+.modal-content {
+    background-color: transparent;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 900px;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: none;
+}
 
+#model-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: transparent;
+}
 
+.modal {
+    background-color: rgba(0,0,0,0.3);
+}
 
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1001;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
 
+.model-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
+.view-3d-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
 
-
-
+.model-placeholder:hover .view-3d-overlay {
+    opacity: 1;
+}
 
 
