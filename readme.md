@@ -1143,15 +1143,13 @@ function initThreeJsViewer(modelUrl) {
 ```
 
 
-
-
 # update 3 automate processing on github servers
 
 ## bugfixes
 ### fix bug in python code that does not overwrite json file
  
 from
-```
+```py
 # remov this part that checks for an existing json file.
 if json_path.exists():
     try:
@@ -1171,7 +1169,7 @@ if json_path.exists():
 
 to
 
-```
+```py
 data = {"files": {}}
 ```
 
@@ -1179,7 +1177,7 @@ data = {"files": {}}
 
 
 from 
-```
+```css
 .modal-content {
     position: relative;
     background-color: transparent; /* Changed from #fff to transparent */
@@ -1193,7 +1191,7 @@ from
 }
 ```
 to
-```
+```css
 .modal-content {
     position: relative;
     background-color: transparent; /* Changed from #fff to transparent */
@@ -1210,7 +1208,7 @@ to
 ## process with github actions
 setup a requirements.txt file
 
-```
+```bash
 torch
 torchvision
 Pillow
@@ -1230,7 +1228,7 @@ now we can deploy our files to the github server.
 - uses for dockers containers, kubernetes, and other virtulisations techniques. easier to us than markdown.
 
 ### execute and deploy.yaml
-```
+```yaml
 name: Generate Tag.py and Deploy
 
 on:

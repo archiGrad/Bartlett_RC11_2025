@@ -46,7 +46,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x800",
-      "last_analyzed": "2025-03-17T09:17:28.867651",
+      "last_analyzed": "2025-03-17T09:19:10.122531",
       "file_size": 1179877
     },
     "2024-09-26-173618_1920x924_scrot.png": {
@@ -95,7 +95,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-17T09:17:29.051262",
+      "last_analyzed": "2025-03-17T09:19:10.301727",
       "file_size": 2559534
     },
     "suzanne/suzanne.glb": {
@@ -122,7 +122,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.052224",
+      "last_analyzed": "2025-03-17T09:19:10.302655",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -146,7 +146,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.052356",
+      "last_analyzed": "2025-03-17T09:19:10.302805",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -196,7 +196,7 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-17T09:17:29.245976",
+      "last_analyzed": "2025-03-17T09:19:10.495277",
       "file_size": 2709314
     },
     "piramid/piramid.glb": {
@@ -231,7 +231,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.353276",
+      "last_analyzed": "2025-03-17T09:19:10.610821",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -267,7 +267,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.353651",
+      "last_analyzed": "2025-03-17T09:19:10.611382",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     },
@@ -317,7 +317,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-17T09:17:29.719300",
+      "last_analyzed": "2025-03-17T09:19:10.972385",
       "file_size": 3251183
     },
     "top_level.txt": {
@@ -344,7 +344,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.719726",
+      "last_analyzed": "2025-03-17T09:19:10.972838",
       "file_size": 9
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -393,7 +393,7 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-17T09:17:29.995934",
+      "last_analyzed": "2025-03-17T09:19:11.244361",
       "file_size": 3197494
     },
     "New Folder/test.glb": {
@@ -432,7 +432,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.996436",
+      "last_analyzed": "2025-03-17T09:19:11.244903",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
     },
@@ -468,7 +468,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:29.996810",
+      "last_analyzed": "2025-03-17T09:19:11.245293",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
     },
@@ -518,7 +518,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x804",
-      "last_analyzed": "2025-03-17T09:17:30.098105",
+      "last_analyzed": "2025-03-17T09:19:11.344533",
       "file_size": 217634
     },
     "satellite.jpeg": {
@@ -567,7 +567,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-17T09:17:30.456430",
+      "last_analyzed": "2025-03-17T09:19:11.686048",
       "file_size": 2891287
     },
     "totem/totem.glb": {
@@ -590,7 +590,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T09:17:30.529594",
+      "last_analyzed": "2025-03-17T09:19:11.754107",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -640,7 +640,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-17T09:17:30.708238",
+      "last_analyzed": "2025-03-17T09:19:11.934426",
       "file_size": 2650949
     }
   }
