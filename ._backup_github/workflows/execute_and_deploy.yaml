@@ -1,0 +1,68 @@
+name: Generate Tag.py and deploy the appliation to Gugub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # allows for local pushes 
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # debian based on unix 
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: set up python 
+        uses: actions/setup-python@v4
+        with: 
+            python-version: '3.10'
+            cache: 'pip'
+
+      - name: install python dependencies
+        run: 
+	  pip install -r requirements.txt	
+
+      - name: run tag.py 
+        run: |
+          python tag.py
+
+      - name: check if data.json is present
+        run: |
+	  ls -la data/	
+	  if [ -f "data/tags.json" ]; then
+            echo "tag file is present"	
+          else
+            echo "tags are not found"
+            exit 1
+          fi
+      - name: deploy our codebase to github pages
+        uses: JamesIves/github-pages-deploy-action@v4
+	with:
+          folder: . 
+          branch: gh-pages
+          clean: true	
+          clean-exclude: |
+            .github
+	    .gitignore
+            README.md
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

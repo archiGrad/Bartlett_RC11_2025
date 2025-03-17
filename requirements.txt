@@ -1,4 +1,4 @@
-torch
-torchvision
+torch 
 Pillow
+torchvision
 numpy
