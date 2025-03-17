@@ -1,6 +1,6 @@
 # Image and Text Search Engine
 
-A search engine that analyzes images and text files, extracting features like dominant colors, image classifications, and text topics. Results are stored in a searchable JSON format with a web interface.
+A search engine that analyzes images and text files, extracting features like dominant colors, image classifications, and text topics. Results are stored in a searchable JSON format with a web interface
 
 ## Features
 
