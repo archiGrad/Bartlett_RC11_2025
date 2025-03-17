@@ -1177,7 +1177,6 @@ data = {"files": {}}
 
 ### fix windowheigth and width in 3d container viewer.
 
-'''
 
 from 
 ```
@@ -1227,7 +1226,7 @@ now we can deploy our files to the github server.
 - lets make a new github actions at ./github/workflow/execute_and_deploy.yaml
 
 
-### what is a yaml fileA
+### what is a yaml file?
 - uses for dockers containers, kubernetes, and other virtulisations techniques. easier to us than markdown.
 
 ### execute and deploy.yaml
