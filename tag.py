@@ -115,25 +115,13 @@ def analyze_text(text_path):
        return []
 
 
+
+
 def process_directory(dir_path, model, classes):
     json_path = Path('data/tags.json')
     
+    # Always start with fresh data structure
     data = {"files": {}}
-    
-    if json_path.exists():
-        try:
-            with open(json_path, 'r') as f:
-                content = f.read().strip()
-                if content:
-                    data = json.loads(content)
-                    if "images" in data and "files" not in data:
-                        data["files"] = data["images"]
-                        del data["images"]
-                    elif "files" not in data:
-                        data["files"] = {}
-        except json.JSONDecodeError:
-            print("Warning: Invalid JSON file, starting fresh")
-            data = {"files": {}}
     
     image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp'}
     text_extensions = {'.txt'}
@@ -175,10 +163,8 @@ def process_directory(dir_path, model, classes):
             month_tag = {"tag": month, "confidence": "100.00%"}
             type_tag = {"tag": "3d", "confidence": "100.00%"}
             
-            existing_entry = data["files"].get(model_rel_path, {})
-            existing_tags = existing_entry.get("tags", [])
-            
-            final_tags = existing_tags if existing_tags else model_tags + [
+            # Always use new tags, ignoring any existing tags
+            final_tags = model_tags + [
                 year_tag,
                 month_tag,
                 type_tag,
@@ -199,9 +185,6 @@ def process_directory(dir_path, model, classes):
             
             image_tensor, dimensions = prepare_image(file)
             if image_tensor is not None:
-                existing_entry = data["files"].get(rel_path, {})
-                existing_tags = existing_entry.get("tags", [])
-
                 predictions = get_image_prediction(model, classes, image_tensor)
                 new_tags = [
                     {"tag": tag, "confidence": f"{conf:.2f}%"}
@@ -221,7 +204,8 @@ def process_directory(dir_path, model, classes):
                 month_tag = {"tag": month, "confidence": "100.00%"}
                 type_tag = {"tag": "image", "confidence": "100.00%"}
                 
-                final_tags = existing_tags if existing_tags else new_tags + [
+                # Always use new tags
+                final_tags = new_tags + [
                     color_tag,
                     year_tag,
                     month_tag,
@@ -242,9 +226,6 @@ def process_directory(dir_path, model, classes):
             rel_path = str(file.relative_to(dir_path))
             print(f"Processing text: {rel_path}")
             
-            existing_entry = data["files"].get(rel_path, {})
-            existing_tags = existing_entry.get("tags", [])
-
             new_tags = analyze_text(file)
             
             filename = file.stem.lower()
@@ -257,7 +238,8 @@ def process_directory(dir_path, model, classes):
             month_tag = {"tag": month, "confidence": "100.00%"}
             type_tag = {"tag": "text", "confidence": "100.00%"}
             
-            final_tags = existing_tags if existing_tags else new_tags + [
+            # Always use new tags
+            final_tags = new_tags + [
                 year_tag,
                 month_tag,
                 type_tag,
@@ -291,10 +273,8 @@ def process_directory(dir_path, model, classes):
             month_tag = {"tag": month, "confidence": "100.00%"}
             type_tag = {"tag": "3d", "confidence": "100.00%"}
             
-            existing_entry = data["files"].get(rel_path, {})
-            existing_tags = existing_entry.get("tags", [])
-            
-            final_tags = existing_tags if existing_tags else model_tags + [
+            # Always use new tags
+            final_tags = model_tags + [
                 year_tag,
                 month_tag,
                 type_tag,
@@ -311,10 +291,6 @@ def process_directory(dir_path, model, classes):
     json_path.parent.mkdir(exist_ok=True)
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
-
-
-
-
 
 
 
