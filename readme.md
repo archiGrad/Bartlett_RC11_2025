@@ -1290,8 +1290,24 @@ jobs:
 1 person needs to be the represenatative and needs to provide the final push
 with other account, lets fork the repo, add changes, and request a change.
 
-## multi user support
-lets imulate a scenario where we push an update from one account, the author does a verification, and either accepts or declines which will initiate the CICD workflow
+
+the workflow is as follow, 
+do this once (user)
+1) pick a representative that will confirm of deny a pull request.
+2) user forks main repository.
+
+do this everytime (user)
+1) sync fork, (so your version is being updated. if other people also add to the engine, you will first need to update your repository with their updates to avoid conflicts.)
+2) add files in the 'data' folder. (3d model, text, image etc), commit changes with a comment e.g. "update some images and a text file"
+3) commit changes
+4) contribute by opening up a pull request
+5) add a 'comment' or description what you did
+
+do this sporadically (author)
+1)check for pul requests.
+2) if the files are uploaded in the corrcet foler 'data', and the files look good, then you can merge+ 'confirm merge'  the users pull request.
+3) now the automatic deployment will begin and the website will be updated
+
 
 
 
