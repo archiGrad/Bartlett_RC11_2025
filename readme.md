@@ -1141,3 +1141,111 @@ function initThreeJsViewer(modelUrl) {
 }
 
 ```
+
+
+
+
+# update 3 automate processing on github servers
+
+## bugfix
+fix bug in python code that does not overwrite json file
+
+## process with github actions
+setup a requirements.txt file
+we dont need to have a venv anymoire since the github actions server is already containerized
+
+```
+
+torch
+torchvision
+Pillow
+numpy
+```
+
+
+make a new github actions with ./github/workflow/execute_and_deploy.yaml
+
+```
+name: Generate Tag.py and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # for manual triggering too
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tag.py to generate tags
+        run: |
+          python tag.py
+        
+      - name: Check generated tag file
+        run: |
+          ls -la data/
+          if [ -f "data/tags.json" ]; then
+            echo "Tags file was successfully generated"
+          else
+            echo "Error: tags.json was not generated"
+            exit 1
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .  # Deploy from root
+          branch: gh-pages
+          clean: true  # Automatically remove deleted files from the deployment
+          clean-exclude: |
+            .github
+            .gitignore
+            LICENSE
+            README.md
+```
+
+
+## make it multi user with forks and authenification
+
+1 person needs to be the represenatative and needs to provide the final push
+with other account, lets fork the repo, add changes, and request a change.
+
+## upload a texture baked blender model from different account
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

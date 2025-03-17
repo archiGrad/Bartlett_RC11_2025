@@ -32,7 +32,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:51.630483",
+      "last_analyzed": "2025-03-17T08:18:19.193543",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
     },
@@ -82,7 +82,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-02T08:30:51.973269",
+      "last_analyzed": "2025-03-17T08:18:19.545237",
       "file_size": 2891287
     },
     "Telemetry_data_architecture_workshop3.png": {
@@ -131,7 +131,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-02T08:30:52.216953",
+      "last_analyzed": "2025-03-17T08:18:19.794995",
       "file_size": 2650949
     },
     "2024-09-26-173504_1913x920_scrot.png": {
@@ -180,7 +180,7 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-02T08:30:51.003092",
+      "last_analyzed": "2025-02-28T20:16:18.736835",
       "file_size": 2709314
     },
     "totem/totem.glb": {
@@ -203,7 +203,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:52.040910",
+      "last_analyzed": "2025-03-17T08:18:19.619327",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -253,7 +253,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-02T08:30:50.699877",
+      "last_analyzed": "2025-03-17T08:18:18.267037",
       "file_size": 2559534
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -302,7 +302,7 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-02T08:30:51.629306",
+      "last_analyzed": "2025-03-17T08:18:19.192649",
       "file_size": 3197494
     },
     "daniel_fspy.fspy.jpg": {
@@ -351,7 +351,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-02T08:30:51.359292",
+      "last_analyzed": "2025-03-17T08:18:18.912983",
       "file_size": 3251183
     },
     "suzanne/suzanne.glb": {
@@ -378,7 +378,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:50.700839",
+      "last_analyzed": "2025-03-17T08:18:18.267927",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -402,7 +402,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:50.700971",
+      "last_analyzed": "2025-03-17T08:18:18.268086",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -442,9 +442,58 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:51.630058",
+      "last_analyzed": "2025-03-17T08:18:19.193175",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
+    },
+    "test.png": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "comic book",
+          "confidence": "14.42%"
+        },
+        {
+          "tag": "umbrella",
+          "confidence": "3.74%"
+        },
+        {
+          "tag": "padlock",
+          "confidence": "2.58%"
+        },
+        {
+          "tag": "quilt",
+          "confidence": "2.21%"
+        },
+        {
+          "tag": "shoe shop",
+          "confidence": "1.90%"
+        },
+        {
+          "tag": "brown",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "march",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "test",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "brown",
+      "dimensions": "1913x920",
+      "last_analyzed": "2025-03-17T08:18:18.458927",
+      "file_size": 2709314
     },
     "piramid/piramid.glb": {
       "type": "3d",
@@ -478,7 +527,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:51.003644",
+      "last_analyzed": "2025-03-17T08:18:18.557757",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -514,7 +563,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-02T08:30:51.003998",
+      "last_analyzed": "2025-03-17T08:18:18.558136",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     }
