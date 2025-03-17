@@ -46,7 +46,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-17T08:52:40.363823",
+      "last_analyzed": "2025-03-17T08:59:07.171680",
       "file_size": 2559534
     },
     "suzanne/suzanne.glb": {
@@ -73,7 +73,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:40.364764",
+      "last_analyzed": "2025-03-17T08:59:07.172698",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -97,7 +97,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:40.364899",
+      "last_analyzed": "2025-03-17T08:59:07.172835",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -147,7 +147,7 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-17T08:52:40.564755",
+      "last_analyzed": "2025-03-17T08:59:07.362757",
       "file_size": 2709314
     },
     "piramid/piramid.glb": {
@@ -182,7 +182,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:40.675082",
+      "last_analyzed": "2025-03-17T08:59:07.449874",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -218,7 +218,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:40.675526",
+      "last_analyzed": "2025-03-17T08:59:07.450259",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     },
@@ -268,7 +268,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-17T08:52:41.051220",
+      "last_analyzed": "2025-03-17T08:59:07.805645",
       "file_size": 3251183
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -317,7 +317,7 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-17T08:52:41.328404",
+      "last_analyzed": "2025-03-17T08:59:08.076871",
       "file_size": 3197494
     },
     "New Folder/test.glb": {
@@ -356,7 +356,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:41.328959",
+      "last_analyzed": "2025-03-17T08:59:08.077415",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
     },
@@ -392,9 +392,58 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:41.329322",
+      "last_analyzed": "2025-03-17T08:59:08.077793",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
+    },
+    "korean_tree.jpg": {
+      "type": "image",
+      "tags": [
+        {
+          "tag": "park bench",
+          "confidence": "2.80%"
+        },
+        {
+          "tag": "baboon",
+          "confidence": "2.59%"
+        },
+        {
+          "tag": "worm fence",
+          "confidence": "2.52%"
+        },
+        {
+          "tag": "birdhouse",
+          "confidence": "1.77%"
+        },
+        {
+          "tag": "cheetah",
+          "confidence": "1.62%"
+        },
+        {
+          "tag": "gray",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "march",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "image",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "korean_tree",
+          "confidence": "100.00%"
+        }
+      ],
+      "color": "gray",
+      "dimensions": "1200x804",
+      "last_analyzed": "2025-03-17T08:59:08.177820",
+      "file_size": 217634
     },
     "satellite.jpeg": {
       "type": "image",
@@ -442,7 +491,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-17T08:52:41.689929",
+      "last_analyzed": "2025-03-17T08:59:08.527964",
       "file_size": 2891287
     },
     "totem/totem.glb": {
@@ -465,7 +514,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T08:52:41.760638",
+      "last_analyzed": "2025-03-17T08:59:08.598238",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -515,7 +564,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-17T08:52:41.940562",
+      "last_analyzed": "2025-03-17T08:59:08.775907",
       "file_size": 2650949
     }
   }
