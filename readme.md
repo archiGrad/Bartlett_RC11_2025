@@ -1147,26 +1147,92 @@ function initThreeJsViewer(modelUrl) {
 
 # update 3 automate processing on github servers
 
-## bugfix
-fix bug in python code that does not overwrite json file
+## bugfixes
+### fix bug in python code that does not overwrite json file
+ 
+from
+```
+# remov this part that checks for an existing json file.
+if json_path.exists():
+    try:
+        with open(json_path, 'r') as f:
+            content = f.read().strip()
+            if content:
+                data = json.loads(content)
+                if "images" in data and "files" not in data:
+                    data["files"] = data["images"]
+                    del data["images"]
+                elif "files" not in data:
+                    data["files"] = {}
+    except json.JSONDecodeError:
+        print("Warning: Invalid JSON file, starting fresh")
+        data = {"files": {}}
+```
 
-## process with github actions
-setup a requirements.txt file
-we dont need to have a venv anymoire since the github actions server is already containerized
+to
+
+```
+data = {"files": {}}
+```
+
+### fix windowheigth and width in 3d container viewer.
+
+'''
+
+from 
+```
+.modal-content {
+    position: relative;
+    background-color: transparent; /* Changed from #fff to transparent */
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 900px;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: none; /* Removed shadow */
+}
+```
+to
+```
+.modal-content {
+    position: relative;
+    background-color: transparent; /* Changed from #fff to transparent */
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: none; /* Removed shadow */
+}
 
 ```
 
+
+## process with github actions
+setup a requirements.txt file
+
+```
 torch
 torchvision
 Pillow
 numpy
-```
-
-
-make a new github actions with ./github/workflow/execute_and_deploy.yaml
 
 ```
-name: Generate Tag.py and Deploy to GitHub Pages
+
+we dont need to have a venv anymoire since the github actions server is already containerized.
+now we can deploy our files to the github server. 
+### what is gitub actions
+- a CI/CD (Continuous Integration/Continuous Deployment) platform built into GitHub that automates  workflows directly in your repo. It's useful because it allows for automatic collaboration, deployment, tessting and building everytime a change has been pushed. 
+
+- lets make a new github actions at ./github/workflow/execute_and_deploy.yaml
+
+
+### what is a yaml fileA
+- uses for dockers containers, kubernetes, and other virtulisations techniques. easier to us than markdown.
+
+### execute and deploy.yaml
+```
+name: Generate Tag.py and Deploy
 
 on:
   push:
@@ -1176,7 +1242,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # a debian based linux distro
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -1195,7 +1261,7 @@ jobs:
         run: |
           python tag.py
         
-      - name: Check generated tag file
+      - name: Check generated tag file # tezt to see if changes where correctly deployed
         run: |
           ls -la data/
           if [ -f "data/tags.json" ]; then
@@ -1205,12 +1271,12 @@ jobs:
             exit 1
           fi
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages # here we are using an existing deploy-action. we can integrate actions from other users
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .  # Deploy from root
-          branch: gh-pages
-          clean: true  # Automatically remove deleted files from the deployment
+          branch: gh-pages # always this branch as it is part of jamesIves docs
+          clean: true  # auto remove deleted files from the deployment
           clean-exclude: |
             .github
             .gitignore
@@ -1224,7 +1290,8 @@ jobs:
 1 person needs to be the represenatative and needs to provide the final push
 with other account, lets fork the repo, add changes, and request a change.
 
-## upload a texture baked blender model from different account
+## multi user support
+lets imulate a scenario where we push an update from one account, the author does a verification, and either accepts or declines which will initiate the CICD workflow
 
 
 

@@ -195,11 +195,9 @@ body {
 .modal-content {
     position: relative;
     background-color: transparent; /* Changed from #fff to transparent */
-    margin: 5% auto;
     padding: 0;
-    width: 90%;
-    max-width: 900px;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     box-shadow: none; /* Removed shadow */
 }

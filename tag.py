@@ -120,7 +120,7 @@ def analyze_text(text_path):
 def process_directory(dir_path, model, classes):
     json_path = Path('data/tags.json')
     
-    # Always start with fresh data structure
+    # new data structure instead of check ing if exist
     data = {"files": {}}
     
     image_extensions = {'.jpg', '.jpeg', '.png', '.gif', '.bmp'}
@@ -291,15 +291,6 @@ def process_directory(dir_path, model, classes):
     json_path.parent.mkdir(exist_ok=True)
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
-
-
-
-
-
-
-
-
-
 
 
 
