@@ -21,7 +21,7 @@ jobs:
             cache: 'pip'
 
       - name: install python dependencies
-        run: |
+        run: 
 	  pip install -r requirements.txt	
 
       - name: run tag.py 
