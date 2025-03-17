@@ -46,7 +46,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x800",
-      "last_analyzed": "2025-03-17T11:45:58.884372",
+      "last_analyzed": "2025-03-17T11:50:15.985661",
       "file_size": 1179877
     },
     "2024-09-26-173618_1920x924_scrot.png": {
@@ -95,7 +95,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-17T11:45:59.062041",
+      "last_analyzed": "2025-03-17T11:50:16.165142",
       "file_size": 2559534
     },
     "suzanne/suzanne.glb": {
@@ -122,7 +122,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.063040",
+      "last_analyzed": "2025-03-17T11:50:16.166218",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -146,7 +146,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.063178",
+      "last_analyzed": "2025-03-17T11:50:16.166349",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -196,8 +196,51 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-17T11:45:59.253487",
+      "last_analyzed": "2025-03-17T11:50:16.356687",
       "file_size": 2709314
+    },
+    "LICENSE.txt": {
+      "type": "text",
+      "tags": [
+        {
+          "tag": "data",
+          "confidence": "5.41%"
+        },
+        {
+          "tag": "any",
+          "confidence": "2.70%"
+        },
+        {
+          "tag": "inconsistencies",
+          "confidence": "2.70%"
+        },
+        {
+          "tag": "licenses",
+          "confidence": "2.70%"
+        },
+        {
+          "tag": "copyrights",
+          "confidence": "2.70%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "march",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "text",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "license",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-03-17T11:50:16.444105",
+      "file_size": 845
     },
     "piramid/piramid.glb": {
       "type": "3d",
@@ -231,7 +274,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.346629",
+      "last_analyzed": "2025-03-17T11:50:16.444626",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -267,7 +310,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.347288",
+      "last_analyzed": "2025-03-17T11:50:16.445009",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     },
@@ -317,7 +360,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-17T11:45:59.700703",
+      "last_analyzed": "2025-03-17T11:50:16.800580",
       "file_size": 3251183
     },
     "top_level.txt": {
@@ -344,7 +387,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.701121",
+      "last_analyzed": "2025-03-17T11:50:16.801130",
       "file_size": 9
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -393,7 +436,7 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-17T11:45:59.974110",
+      "last_analyzed": "2025-03-17T11:50:17.075427",
       "file_size": 3197494
     },
     "entry_points.txt": {
@@ -436,7 +479,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.974676",
+      "last_analyzed": "2025-03-17T11:50:17.075992",
       "file_size": 2636
     },
     "New Folder/test.glb": {
@@ -475,7 +518,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.976441",
+      "last_analyzed": "2025-03-17T11:50:17.076452",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
     },
@@ -511,7 +554,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:45:59.976933",
+      "last_analyzed": "2025-03-17T11:50:17.076788",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
     },
@@ -561,7 +604,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x804",
-      "last_analyzed": "2025-03-17T11:46:00.076815",
+      "last_analyzed": "2025-03-17T11:50:17.177175",
       "file_size": 217634
     },
     "satellite.jpeg": {
@@ -610,7 +653,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-17T11:46:00.425272",
+      "last_analyzed": "2025-03-17T11:50:17.526222",
       "file_size": 2891287
     },
     "totem/totem.glb": {
@@ -633,7 +676,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:46:00.592602",
+      "last_analyzed": "2025-03-17T11:50:17.695292",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -683,7 +726,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-17T11:46:00.769612",
+      "last_analyzed": "2025-03-17T11:50:17.881461",
       "file_size": 2650949
     }
   }

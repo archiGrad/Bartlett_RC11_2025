@@ -1,0 +1,15 @@
+RESPONSIBILITIES
+We attach great importance to the quality and accuracy of the data we share. However, topoexport.com cannot be held responsible for any anomalies, inconsistencies, or inaccuracies found in the exported files. It is necessary for users to conduct rigorous data checks with surveyors before using them to avoid any errors, approximations, or inconsistencies.
+_____________________________
+
+LICENSES AND COPYRIGHTS
+
+The following licenses and copyrights apply to the various elements on our website:
+Front-end:
+    Interactive Map: Leaflet and OpenStreetMap contributions.
+
+Vectorial Sources
+  Terrain Data: Institut national de l'information géographique et forestière - RGE Alti® 2023 (Etalab 2.0)
+
+Imagery Sources
+  Imagery Data: Institut national de l'information géographique et forestière - BD ORTHO® 2023 (Etalab 2.0)
