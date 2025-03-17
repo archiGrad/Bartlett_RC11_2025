@@ -46,7 +46,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x800",
-      "last_analyzed": "2025-03-17T11:50:15.985661",
+      "last_analyzed": "2025-03-17T11:55:48.171057",
       "file_size": 1179877
     },
     "2024-09-26-173618_1920x924_scrot.png": {
@@ -95,7 +95,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-17T11:50:16.165142",
+      "last_analyzed": "2025-03-17T11:55:48.351221",
       "file_size": 2559534
     },
     "suzanne/suzanne.glb": {
@@ -122,7 +122,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.166218",
+      "last_analyzed": "2025-03-17T11:55:48.352201",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -146,7 +146,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.166349",
+      "last_analyzed": "2025-03-17T11:55:48.352366",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -196,7 +196,7 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-17T11:50:16.356687",
+      "last_analyzed": "2025-03-17T11:55:48.543014",
       "file_size": 2709314
     },
     "LICENSE.txt": {
@@ -239,7 +239,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.444105",
+      "last_analyzed": "2025-03-17T11:55:48.648249",
       "file_size": 845
     },
     "piramid/piramid.glb": {
@@ -274,7 +274,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.444626",
+      "last_analyzed": "2025-03-17T11:55:48.648689",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -310,7 +310,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.445009",
+      "last_analyzed": "2025-03-17T11:55:48.649022",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     },
@@ -360,7 +360,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-17T11:50:16.800580",
+      "last_analyzed": "2025-03-17T11:55:49.015620",
       "file_size": 3251183
     },
     "top_level.txt": {
@@ -387,7 +387,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:16.801130",
+      "last_analyzed": "2025-03-17T11:55:49.016087",
       "file_size": 9
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -436,7 +436,7 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-17T11:50:17.075427",
+      "last_analyzed": "2025-03-17T11:55:49.292376",
       "file_size": 3197494
     },
     "entry_points.txt": {
@@ -479,7 +479,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:17.075992",
+      "last_analyzed": "2025-03-17T11:55:49.293010",
       "file_size": 2636
     },
     "New Folder/test.glb": {
@@ -518,7 +518,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:17.076452",
+      "last_analyzed": "2025-03-17T11:55:49.293489",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
     },
@@ -554,7 +554,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:17.076788",
+      "last_analyzed": "2025-03-17T11:55:49.293877",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
     },
@@ -604,7 +604,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x804",
-      "last_analyzed": "2025-03-17T11:50:17.177175",
+      "last_analyzed": "2025-03-17T11:55:49.394595",
       "file_size": 217634
     },
     "satellite.jpeg": {
@@ -653,7 +653,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-17T11:50:17.526222",
+      "last_analyzed": "2025-03-17T11:55:49.749243",
       "file_size": 2891287
     },
     "totem/totem.glb": {
@@ -676,7 +676,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:50:17.695292",
+      "last_analyzed": "2025-03-17T11:55:49.918702",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -726,7 +726,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-17T11:50:17.881461",
+      "last_analyzed": "2025-03-17T11:55:50.097501",
       "file_size": 2650949
     }
   }
