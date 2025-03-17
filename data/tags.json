@@ -46,7 +46,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x800",
-      "last_analyzed": "2025-03-17T11:05:08.129771",
+      "last_analyzed": "2025-03-17T11:42:36.078011",
       "file_size": 1179877
     },
     "2024-09-26-173618_1920x924_scrot.png": {
@@ -95,7 +95,7 @@
       ],
       "color": "brown",
       "dimensions": "1920x924",
-      "last_analyzed": "2025-03-17T11:05:08.312522",
+      "last_analyzed": "2025-03-17T11:42:36.256863",
       "file_size": 2559534
     },
     "suzanne/suzanne.glb": {
@@ -122,7 +122,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:08.313484",
+      "last_analyzed": "2025-03-17T11:42:36.257806",
       "file_size": 69624,
       "thumbnail": null
     },
@@ -146,7 +146,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:08.313616",
+      "last_analyzed": "2025-03-17T11:42:36.257933",
       "file_size": 3247384,
       "thumbnail": "heatmap/thumbnail.png"
     },
@@ -196,7 +196,7 @@
       ],
       "color": "brown",
       "dimensions": "1913x920",
-      "last_analyzed": "2025-03-17T11:05:08.506437",
+      "last_analyzed": "2025-03-17T11:42:36.446689",
       "file_size": 2709314
     },
     "piramid/piramid.glb": {
@@ -231,7 +231,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:08.597818",
+      "last_analyzed": "2025-03-17T11:42:36.586510",
       "file_size": 161772,
       "thumbnail": "piramid/thumbnail.png"
     },
@@ -267,7 +267,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:08.598242",
+      "last_analyzed": "2025-03-17T11:42:36.587098",
       "file_size": 161772,
       "thumbnail": "testing/thumbnail.png"
     },
@@ -317,7 +317,7 @@
       ],
       "color": "gray",
       "dimensions": "4624x3468",
-      "last_analyzed": "2025-03-17T11:05:08.967278",
+      "last_analyzed": "2025-03-17T11:42:36.941939",
       "file_size": 3251183
     },
     "top_level.txt": {
@@ -344,7 +344,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:08.967699",
+      "last_analyzed": "2025-03-17T11:42:36.942546",
       "file_size": 9
     },
     "2024-11-07-091701_1431x992_scrot.png": {
@@ -393,8 +393,51 @@
       ],
       "color": "gray",
       "dimensions": "1431x992",
-      "last_analyzed": "2025-03-17T11:05:09.243341",
+      "last_analyzed": "2025-03-17T11:42:37.216919",
       "file_size": 3197494
+    },
+    "entry_points.txt": {
+      "type": "text",
+      "tags": [
+        {
+          "tag": "setuptoolsdistcheckrequirements",
+          "confidence": "3.00%"
+        },
+        {
+          "tag": "setuptoolscommandegginfooverwritearg",
+          "confidence": "3.00%"
+        },
+        {
+          "tag": "setuptoolsdistassertstringlist",
+          "confidence": "2.00%"
+        },
+        {
+          "tag": "setuptoolsdistcheckpackagedata",
+          "confidence": "2.00%"
+        },
+        {
+          "tag": "setuptoolsdistassertbool",
+          "confidence": "2.00%"
+        },
+        {
+          "tag": "2025",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "march",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "text",
+          "confidence": "100.00%"
+        },
+        {
+          "tag": "entry_points",
+          "confidence": "100.00%"
+        }
+      ],
+      "last_analyzed": "2025-03-17T11:42:37.217480",
+      "file_size": 2636
     },
     "New Folder/test.glb": {
       "type": "3d",
@@ -432,7 +475,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:09.243909",
+      "last_analyzed": "2025-03-17T11:42:37.217878",
       "file_size": 1387512,
       "thumbnail": "New Folder/thumbnail.png"
     },
@@ -468,7 +511,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:09.244346",
+      "last_analyzed": "2025-03-17T11:42:37.218491",
       "file_size": 8378260,
       "thumbnail": "monkey/thumbnail.png"
     },
@@ -518,7 +561,7 @@
       ],
       "color": "gray",
       "dimensions": "1200x804",
-      "last_analyzed": "2025-03-17T11:05:09.346920",
+      "last_analyzed": "2025-03-17T11:42:37.318230",
       "file_size": 217634
     },
     "satellite.jpeg": {
@@ -567,7 +610,7 @@
       ],
       "color": "gray",
       "dimensions": "3858x4096",
-      "last_analyzed": "2025-03-17T11:05:09.699000",
+      "last_analyzed": "2025-03-17T11:42:37.670015",
       "file_size": 2891287
     },
     "totem/totem.glb": {
@@ -590,7 +633,7 @@
           "confidence": "100.00%"
         }
       ],
-      "last_analyzed": "2025-03-17T11:05:09.768370",
+      "last_analyzed": "2025-03-17T11:42:37.842171",
       "file_size": 6876568,
       "thumbnail": "totem/thumbnail.png"
     },
@@ -640,7 +683,7 @@
       ],
       "color": "gray",
       "dimensions": "1918x919",
-      "last_analyzed": "2025-03-17T11:05:09.946704",
+      "last_analyzed": "2025-03-17T11:42:38.028151",
       "file_size": 2650949
     }
   }
